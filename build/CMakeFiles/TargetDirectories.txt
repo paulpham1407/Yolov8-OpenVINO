@@ -1,0 +1,4 @@
+/home/anslinux20/Projects/Yolov8-OpenVINO/build/CMakeFiles/edit_cache.dir
+/home/anslinux20/Projects/Yolov8-OpenVINO/build/CMakeFiles/rebuild_cache.dir
+/home/anslinux20/Projects/Yolov8-OpenVINO/build/CMakeFiles/libinferenceopv_exe.dir
+/home/anslinux20/Projects/Yolov8-OpenVINO/build/CMakeFiles/libinferenceopv.dir

@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/anslinux20/Projects/Yolov8-OpenVINO/build",
+  "command": "/usr/bin/g++   -I/opt/intel/openvino/runtime/include -I/opt/intel/openvino/runtime/include/ie -I/opt/intel/openvino/runtime/include/ngraph -I../include -isystem /usr/local/include/opencv4  -g   -o CMakeFiles/libinferenceopv_exe.dir/main.cpp.o -c /home/anslinux20/Projects/Yolov8-OpenVINO/main.cpp",
+  "file": "/home/anslinux20/Projects/Yolov8-OpenVINO/main.cpp"
+},
+
+{
+  "directory": "/home/anslinux20/Projects/Yolov8-OpenVINO/build",
+  "command": "/usr/bin/g++  -Dlibinferenceopv_EXPORTS -I/opt/intel/openvino/runtime/include -I/opt/intel/openvino/runtime/include/ie -I/opt/intel/openvino/runtime/include/ngraph -I../include -isystem /usr/local/include/opencv4  -g -fPIC   -o CMakeFiles/libinferenceopv.dir/inferenceopv.cpp.o -c /home/anslinux20/Projects/Yolov8-OpenVINO/inferenceopv.cpp",
+  "file": "/home/anslinux20/Projects/Yolov8-OpenVINO/inferenceopv.cpp"
+}
+]
