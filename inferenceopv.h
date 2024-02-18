@@ -1,7 +1,5 @@
-#ifndef INFERENCEOPV_H
-#define INFERENCEOPV_H
-
-#include<string>
+#pragma once
+#include <string>
 #include <iostream>
 #include <opencv2/dnn.hpp>
 #include <opencv2/imgproc.hpp>
@@ -11,16 +9,6 @@
 #include <vector>
 #include <random>
 
-
-struct Config {
-	float confThreshold;
-	float nmsThreshold;
-	float scoreThreshold;
-	int inpWidth;
-	int inpHeight;
-	std::string onnx_path;
-};
-
 struct Resize
 {
 	cv::Mat resized_image;
@@ -29,33 +17,29 @@ struct Resize
 };
 
 struct Object {
-	int label{};
-	float probability{};
-	cv::Rect_<float> rect;
+	int class_id{ 0 };
+	std::string class_name{};
+	float confidence{ 0.0 };
+	cv::Rect_ <float> box{};
+	cv::Mat mask{};
 };
 
 class InferenceOPV {
 public:
-	InferenceOPV(Config config);
-	~InferenceOPV();
-	std::vector<Object> detect(const cv::Mat& frame);
-
+	InferenceOPV(std::string model_path, const int height = 640, const int width = 640, const float m_proThreshold = 0.50f, const float nmsThreshold = 0.65f);
+	std::vector <Object> detect(const cv::Mat& inputImgBGR);
 private:
-	float confThreshold;
-	float nmsThreshold;
-	float scoreThreshold;
-	int inpWidth;
-	int inpHeight;
-	float rx;   // the width ratio of original image and resized image
-	float ry;   // the height ratio of original image and resized image
-	std::string onnx_path;
+	float rx;
+	float ry;
+	int m_height;
+	int m_width;
+	float m_proThreshold;
+	float m_nmsThreshold;
 	Resize resize;
 	ov::Tensor input_tensor;
 	ov::InferRequest infer_request;
 	ov::CompiledModel compiled_model;
-	void initialmodel();
-	void preprocess(cv::Mat& frame);
-	std::vector<Object> postprocess(cv::Mat& frame, float* detections, ov::Shape & output_shape);
-};
 
-#endif INFERENCEOPV_H
+	void preprocess(const cv::Mat& frame);
+	std::vector <Object> postprocess(const cv::Mat& frame, float* detections, ov::Shape& output_shape);
+};
